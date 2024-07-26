@@ -106,6 +106,10 @@ const en: LocaleType = {
       Toast: "Capturing Image...",
       Modal: "Long press or right click to save image",
     },
+    Artifacts: {
+      Title: "Share Artifacts",
+      Error: "Share Error",
+    },
   },
   Select: {
     Search: "Search",
@@ -372,6 +376,17 @@ const en: LocaleType = {
           SubTitle: "Example: ",
         },
       },
+      Stability: {
+        ApiKey: {
+          Title: "Stability API Key",
+          SubTitle: "Use a custom Stability API Key",
+          Placeholder: "Stability API Key",
+        },
+        Endpoint: {
+          Title: "Endpoint Address",
+          SubTitle: "Example: ",
+        },
+      },
       CustomModel: {
         Title: "Custom Models",
         SubTitle: "Custom model options, seperated by comma",
@@ -391,6 +406,10 @@ const en: LocaleType = {
         ApiVersion: {
           Title: "API Version (specific to gemini-pro)",
           SubTitle: "Select a specific API version",
+        },
+        GoogleSafetySettings: {
+          Title: "Google Safety Settings",
+          SubTitle: "Select a safety filtering level",
         },
       },
     },
@@ -449,6 +468,10 @@ const en: LocaleType = {
   },
   Plugin: {
     Name: "Plugin",
+    Artifacts: "Artifacts",
+  },
+  Discovery: {
+    Name: "Discovery",
   },
   FineTuned: {
     Sysmessage: "You are an assistant that",
@@ -566,6 +589,8 @@ const en: LocaleType = {
       Copy: "Copy Prompt",
       Delete: "Delete",
       Retry: "Retry",
+      ReturnHome: "Return Home",
+      History: "History",
     },
     EmptyRecord: "No images yet",
     Status: {

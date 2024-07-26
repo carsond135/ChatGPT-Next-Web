@@ -104,6 +104,10 @@ const cn = {
       Toast: "正在生成截图",
       Modal: "长按或右键保存图片",
     },
+    Artifacts: {
+      Title: "分享页面",
+      Error: "分享失败",
+    },
   },
   Select: {
     Search: "搜索消息",
@@ -346,6 +350,10 @@ const cn = {
           Title: "API 版本（仅适用于 gemini-pro）",
           SubTitle: "选择一个特定的 API 版本",
         },
+        GoogleSafetySettings: {
+          Title: "Google 安全过滤级别",
+          SubTitle: "设置内容过滤级别",
+        },
       },
       Baidu: {
         ApiKey: {
@@ -379,6 +387,17 @@ const cn = {
           Title: "接口密钥",
           SubTitle: "使用自定义阿里云API Key",
           Placeholder: "Alibaba Cloud API Key",
+        },
+        Endpoint: {
+          Title: "接口地址",
+          SubTitle: "样例：",
+        },
+      },
+      Stability: {
+        ApiKey: {
+          Title: "接口密钥",
+          SubTitle: "使用自定义 Stability API Key",
+          Placeholder: "Stability API Key",
         },
         Endpoint: {
           Title: "接口地址",
@@ -442,6 +461,10 @@ const cn = {
   },
   Plugin: {
     Name: "插件",
+    Artifacts: "Artifacts",
+  },
+  Discovery: {
+    Name: "发现",
   },
   FineTuned: {
     Sysmessage: "你是一个助手",
@@ -560,6 +583,8 @@ const cn = {
       Copy: "复制提示词",
       Delete: "删除",
       Retry: "重试",
+      ReturnHome: "返回首页",
+      History: "查看历史",
     },
     EmptyRecord: "暂无绘画记录",
     Status: {

@@ -1,4 +1,4 @@
-export const OWNER = "carsond135";
+export const OWNER = "ChatGPTNextWeb";
 export const REPO = "ChatGPT-Next-Web";
 export const REPO_URL = `https://github.com/${OWNER}/${REPO}`;
 export const ISSUE_URL = `https://github.com/${OWNER}/${REPO}/issues`;
@@ -23,7 +23,8 @@ export const BYTEDANCE_BASE_URL = "https://ark.cn-beijing.volces.com";
 
 export const ALIBABA_BASE_URL = "https://dashscope.aliyuncs.com/api/";
 
-export const UPLOAD_URL = "/api/cache/upload";
+export const CACHE_URL_PREFIX = "/api/cache";
+export const UPLOAD_URL = `${CACHE_URL_PREFIX}/upload`;
 
 export enum Path {
   Home = "/",
@@ -33,7 +34,8 @@ export enum Path {
   Masks = "/masks",
   Auth = "/auth",
   Sd = "/sd",
-  SdPanel = "/sd-panel",
+  SdNew = "/sd-new",
+  Artifacts = "/artifacts",
 }
 
 export enum ApiPath {
@@ -45,6 +47,8 @@ export enum ApiPath {
   Baidu = "/api/baidu",
   ByteDance = "/api/bytedance",
   Alibaba = "/api/alibaba",
+  Stability = "/api/stability",
+  Artifacts = "/api/artifacts",
 }
 
 export enum SlotID {
@@ -57,8 +61,11 @@ export enum FileName {
   Prompts = "prompts.json",
 }
 
+export enum Plugin {
+  Artifacts = "artifacts",
+}
+
 export enum StoreKey {
-  File = "chat-next-web-file",
   Chat = "chat-next-web-store",
   Access = "access-control",
   Config = "app-config",
@@ -86,7 +93,6 @@ export const REQUEST_TIMEOUT_MS = 60000;
 export const EXPORT_MESSAGE_CLASS_NAME = "export-markdown";
 
 export enum ServiceProvider {
-  Stability = "Stability",
   OpenAI = "OpenAI",
   Azure = "Azure",
   Google = "Google",
@@ -94,6 +100,16 @@ export enum ServiceProvider {
   Baidu = "Baidu",
   ByteDance = "ByteDance",
   Alibaba = "Alibaba",
+  Stability = "Stability",
+}
+
+// Google API safety settings, see https://ai.google.dev/gemini-api/docs/safety-settings
+// BLOCK_NONE will not block any content, and BLOCK_ONLY_HIGH will block only high-risk content.
+export enum GoogleSafetySettingsThreshold {
+  BLOCK_NONE = "BLOCK_NONE",
+  BLOCK_ONLY_HIGH = "BLOCK_ONLY_HIGH",
+  BLOCK_MEDIUM_AND_ABOVE = "BLOCK_MEDIUM_AND_ABOVE",
+  BLOCK_LOW_AND_ABOVE = "BLOCK_LOW_AND_ABOVE",
 }
 
 export enum ModelProvider {
@@ -106,8 +122,9 @@ export enum ModelProvider {
   Qwen = "Qwen",
 }
 
-export const StabilityPath = {
+export const Stability = {
   GeneratePath: "v2beta/stable-image/generate",
+  ExampleEndpoint: "https://api.stability.ai",
 };
 
 export const Anthropic = {
@@ -132,7 +149,8 @@ export const Azure = {
 
 export const Google = {
   ExampleEndpoint: "https://generativelanguage.googleapis.com/",
-  ChatPath: (modelName: string) => `v1beta/models/${modelName}:generateContent`,
+  ChatPath: (modelName: string) =>
+    `v1beta/models/${modelName}:streamGenerateContent`,
 };
 
 export const Baidu = {
@@ -147,9 +165,6 @@ export const Baidu = {
     }
     if (modelName === "ernie-3.5-8k") {
       endpoint = "completions";
-    }
-    if (modelName === "ernie-speed-128k") {
-      endpoint = "ernie-speed-128k";
     }
     if (modelName === "ernie-speed-8k") {
       endpoint = "ernie_speed";
@@ -186,7 +201,7 @@ Latex inline: \\(x^2\\)
 Latex block: $$e=mc^2$$
 `;
 
-export const SUMMARIZE_MODEL = "gpt-3.5-turbo";
+export const SUMMARIZE_MODEL = "gpt-4o-mini";
 export const GEMINI_SUMMARIZE_MODEL = "gemini-pro";
 
 export const KnowledgeCutOffDate: Record<string, string> = {
@@ -196,6 +211,8 @@ export const KnowledgeCutOffDate: Record<string, string> = {
   "gpt-4-turbo-preview": "2023-12",
   "gpt-4o": "2023-10",
   "gpt-4o-2024-05-13": "2023-10",
+  "gpt-4o-mini": "2023-10",
+  "gpt-4o-mini-2024-07-18": "2023-10",
   "gpt-4-vision-preview": "2023-04",
   // After improvements,
   // it's now easier to add "KnowledgeCutOffDate" instead of stupid hardcoding it, as was done previously.
@@ -215,6 +232,8 @@ const openaiModels = [
   "gpt-4-turbo-preview",
   "gpt-4o",
   "gpt-4o-2024-05-13",
+  "gpt-4o-mini",
+  "gpt-4o-mini-2024-07-18",
   "gpt-4-vision-preview",
   "gpt-4-turbo-2024-04-09",
   "gpt-4-1106-preview",
@@ -248,7 +267,7 @@ const baiduModels = [
   "ernie-speed-128k",
   "ernie-speed-8k",
   "ernie-lite-8k",
-  "ernie-tiny-8k"
+  "ernie-tiny-8k",
 ];
 
 const bytedanceModels = [
